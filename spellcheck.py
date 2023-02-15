@@ -14,6 +14,45 @@ def main():
     # Print first 50 values of each list to verify contents
     print(dictionary[0:50])
     print(aliceWords[0:50])
+
+    #menu
+    menuloop = True
+while menuloop:
+    print("\n")
+    print("1: 1: Spell Check a Word (Linear Search)")
+    print("2: 2: Spell Check a Word (Binary Search)")
+    print("3: 3: Spell Check Alice In Wonderland (Linear Search)")
+    print("4: 4: Spell Check Alice In Wonderland (Binary Search)")
+    print("5: EXIT")
+
+    selection = input("please enter menu selection: ")
+
+    #action
+    if selection =="1":
+        word = input(print("Please enter a word:"))
+        print("Linear Search starting...")
+        check = linear_search(dictionary, word)
+        if check == -1:
+            print(f"{word}is NOT IN the dictionary.")
+
+    elif selection == "2":
+        word = input(print("Please enter a word:"))
+        print("Binary Search starting...")
+        check = binary_search(dictionary, word)
+        if check == -1:
+            print(f"{word}is NOT IN the dictionary.")
+
+    elif selection == "3":
+        print("idk")
+
+    elif selection == "4":
+        print("idk")
+        
+    elif selection == "5":
+        print("\nEXIT")
+        menuloop = False
+    else:
+        print("\nERR please enter a valid number")
 # end main()
 
 
@@ -26,6 +65,7 @@ def loadWordsFromFile(fileName):
     # Split text by one or more whitespace characters
     return re.split('\s+', textData)
 # end loadWordsFromFile()
+
 
 #searches:
 def linear_search(array, item):
