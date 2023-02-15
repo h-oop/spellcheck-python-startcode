@@ -4,7 +4,7 @@
 # 2: aliceWords: a list containing all of the words from "AliceInWonderland.txt"
 
 import re  # Needed for splitting text with a regular expression
-
+import time
 
 def main():
     # Load data files into lists
@@ -15,44 +15,65 @@ def main():
     print(dictionary[0:50])
     print(aliceWords[0:50])
 
+
+
     #menu
     menuloop = True
-while menuloop:
-    print("\n")
-    print("1: 1: Spell Check a Word (Linear Search)")
-    print("2: 2: Spell Check a Word (Binary Search)")
-    print("3: 3: Spell Check Alice In Wonderland (Linear Search)")
-    print("4: 4: Spell Check Alice In Wonderland (Binary Search)")
-    print("5: EXIT")
+    while menuloop:
+        print("\nMain Menu")
+        print("1: Spell Check a Word (Linear Search)")
+        print("2: Spell Check a Word (Binary Search)")
+        print("3: Spell Check Alice In Wonderland (Linear Search)")
+        print("4: Spell Check Alice In Wonderland (Binary Search)")
+        print("5: EXIT")
 
-    selection = input("please enter menu selection: ")
+        selection = input("please enter menu selection: ")
 
-    #action
-    if selection =="1":
-        word = input(print("Please enter a word:"))
-        print("Linear Search starting...")
-        check = linear_search(dictionary, word)
-        if check == -1:
-            print(f"{word}is NOT IN the dictionary.")
+        #action
+        if selection == "1":
+            word = input("Please enter a word:")
 
-    elif selection == "2":
-        word = input(print("Please enter a word:"))
-        print("Binary Search starting...")
-        check = binary_search(dictionary, word)
-        if check == -1:
-            print(f"{word}is NOT IN the dictionary.")
+            print("\nLinear Search starting...")
 
-    elif selection == "3":
-        print("idk")
+            check = linear_search(dictionary, word)
 
-    elif selection == "4":
-        print("idk")
-        
-    elif selection == "5":
-        print("\nEXIT")
-        menuloop = False
-    else:
-        print("\nERR please enter a valid number")
+            if check == -1:
+                print(f"{word} is NOT IN the dictionary.")
+            else:
+                print(f"{word} is IN the dictionary.")
+
+
+        elif selection == "2":
+            word = input("Please enter a word:")
+            
+            print("\nBinary Search starting...")
+
+            check = binary_search(dictionary, word)
+
+            if check == -1:
+                print(f"{word} is NOT IN the dictionary.")
+            else:
+                print(f"{word} is IN the dictionary.")
+
+        elif selection == "3":
+            print("\nLinear Search starting...")
+            notwords = 0
+
+            for x in range(len(aliceWords)):
+                n = linear_search(aliceWords, dictionary[x])
+                if n == -1:
+                    notwords += 1
+
+            print(f"Num of words not found in dictionary: {notwords}")
+
+        elif selection == "4":
+            print("idk")
+            
+        elif selection == "5":
+            print("\nEXIT")
+            menuloop = False
+        else:
+            print("\nERR please enter a valid number")
 # end main()
 
 
