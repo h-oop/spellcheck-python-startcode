@@ -27,6 +27,38 @@ def loadWordsFromFile(fileName):
     return re.split('\s+', textData)
 # end loadWordsFromFile()
 
+#searches:
+def linear_search(array, item):
+
+    for x in range(len(array)):
+
+        if array[x] == item:
+            return x
+
+    return -1
+
+def binary_search(array, item):
+    #index's
+    li = 0
+    ui= len(array)-1
+
+    while li<=ui:
+        #acquire middle index
+        mi = (li+ui)//2
+
+        #check
+        if array[mi] == item:
+            return mi
+
+        elif array[mi] > item:
+            ui = mi-1
+
+        elif array[mi] < item:
+            li = mi+1
+
+    #n/a
+    return -1
+
 
 # Call main() to begin program
 main()
