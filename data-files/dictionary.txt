@@ -23200,6 +23200,7 @@ etwees
 etyma
 etymon
 etymons
+etymology
 eucaine
 eucaines
 eucalypt

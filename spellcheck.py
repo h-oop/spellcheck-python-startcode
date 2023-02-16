@@ -31,50 +31,88 @@ def main():
 
         #action
         if selection == "1":
-            word = input("Please enter a word:")
+            #linear dictionary
+            word = input("Please enter a word: ")
 
+            start = time.time()
             print("\nLinear Search starting...")
 
-            check = linear_search(dictionary, word)
+            check = linear_search(dictionary, word.lower())
 
             if check == -1:
-                print(f"{word} is NOT IN the dictionary.")
+                end = time.time()
+                timeel = end - start
+                print(f"{word} is NOT IN the dictionary. ({timeel} seconds)")
             else:
-                print(f"{word} is IN the dictionary.")
+                end = time.time()
+                timeel = end - start
+                print(f"{word} is IN the dictionary at position {check}. ({timeel} seconds)")
 
 
         elif selection == "2":
-            word = input("Please enter a word:")
+            #binary dictionary
+            word = input("Please enter a word: ")
             
+            start = time.time()
             print("\nBinary Search starting...")
 
-            check = binary_search(dictionary, word)
+            check = binary_search(dictionary, word.lower())
 
             if check == -1:
-                print(f"{word} is NOT IN the dictionary.")
+                end = time.time()
+                timeel = end - start
+                print(f"{word} is NOT IN the dictionary. ({timeel} seconds)")
             else:
-                print(f"{word} is IN the dictionary.")
+                end = time.time()
+                timeel = end - start
+                print(f"{word} is IN the dictionary at position {check}. ({timeel} seconds)")
+
+
+        #alices
 
         elif selection == "3":
+            #linear alice
+            start = time.time()
+
             print("\nLinear Search starting...")
             notwords = 0
 
-            for x in range(len(aliceWords)):
-                n = linear_search(aliceWords, dictionary[x])
-                if n == -1:
+            for word in aliceWords:
+                if linear_search(dictionary, word.lower()) == -1:
                     notwords += 1
+            
+            end = time.time()
+            timeel = end - start
+            print(f"Num of words not found in dictionary: {notwords} ({timeel} seconds)")
 
-            print(f"Num of words not found in dictionary: {notwords}")
 
         elif selection == "4":
-            print("idk")
+            #binary alice
+            start = time.time()
+
+            print("\nLinear Search starting...")
+            notwords = 0
+
+            for word in aliceWords:
+                if binary_search(dictionary, word.lower()) == -1:
+                    notwords += 1
             
+            end = time.time()
+            timeel = end - start
+            print(f"Num of words not found in dictionary: {notwords} ({timeel} seconds)")
+
+
+
         elif selection == "5":
             print("\nEXIT")
             menuloop = False
         else:
             print("\nERR please enter a valid number")
 # end main()
+
+
+
+
 
 
 def loadWordsFromFile(fileName):
@@ -123,3 +161,7 @@ def binary_search(array, item):
 
 # Call main() to begin program
 main()
+
+
+
+#for each word in alice, I want to run search for that word in dictionary, then if found, cool good, if not -1 ++. Then move on to the next word
